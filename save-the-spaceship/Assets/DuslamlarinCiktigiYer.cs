@@ -5,20 +5,56 @@ using UnityEngine;
 public class DuslamlarinCiktigiYer : MonoBehaviour {
 
     public GameObject dusmanPrefabi;
+    public float genislik = 15f;
+    public float yukseklik = 6f;
+    private float hiz = 5f;
 
-	// Use this for initialization
-	void Start () {
-        foreach(Transform cocuk in transform)
+    private bool SagaHareket = true;
+    private float xmax;
+    private float xmin;
+
+    // Use this for initialization
+    void Start()
+    {
+        float objeIleKameraninZsininfarki = transform.position.z - Camera.main.transform.position.z;
+        Vector3 kameraninSolTarafi = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, objeIleKameraninZsininfarki));
+        Vector3 kameraninSagTarafi = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, objeIleKameraninZsininfarki));
+        xmax = kameraninSagTarafi.x;
+        xmin = kameraninSolTarafi.x;
+        foreach (Transform cocuk in transform)
         {
             GameObject dusman = Instantiate(dusmanPrefabi, cocuk.transform.position, Quaternion.identity) as GameObject;
             dusman.transform.parent = cocuk;
-
         }
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position, new Vector3(genislik, yukseklik));
+    }
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (SagaHareket)
+        {
+            //transform.position += new Vector3(hiz * Time.deltaTime, 0);
+            transform.position += hiz * Vector3.right * Time.deltaTime;
+        }
+        else
+        {
+            transform.position += hiz * Vector3.left * Time.deltaTime;
+        }
+
+        float sagSinir = transform.position.x + genislik / 2;
+        float solSinir = transform.position.x - genislik / 2;
+
+        if (sagSinir > xmax || solSinir < xmin)
+        {
+            SagaHareket = !SagaHareket;
+        }
+
+    }
 }
+
