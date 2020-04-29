@@ -8,10 +8,26 @@ public class UzayGemisiKontrol : MonoBehaviour
     public float hiz = 10f;
     public float inceAyar = 0.7f;
     public GameObject Mermi;
-    public float mermininHizi = 3f;
+    public float mermininHizi = 8f;
+    public float can = 400f;
     public float atesEtmeAraligi = 0.3f;
 
     float xmin, xmax;
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        mermiKontrolu carpanMermi = collision.gameObject.GetComponent<mermiKontrolu>();
+        if (carpanMermi)
+        {
+            can -= carpanMermi.zararVerme();
+            if (can <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
 
     void Start()
     {
@@ -24,14 +40,15 @@ public class UzayGemisiKontrol : MonoBehaviour
 
     void atesEtme()
     {
-        GameObject gemimizinMermisi = Instantiate(Mermi, transform.position, Quaternion.identity);
-        gemimizinMermisi.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 4f, 0);// y => merminin hızı
+        GameObject gemimizinMermisi = Instantiate(Mermi, transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
+        gemimizinMermisi.GetComponent<Rigidbody2D>().velocity = new Vector3(0, mermininHizi, 0);// y => merminin hızı
     }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-           InvokeRepeating("atesEtme",0.000001f,atesEtmeAraligi);
+            InvokeRepeating("atesEtme", 0.000001f, atesEtmeAraligi);
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {

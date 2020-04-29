@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50556192588478926}
   - component: {fileID: 61646886518224002}
   - component: {fileID: 114363192844503060}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GemininMermisi
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212434296036166704}
   - component: {fileID: 114047198855844456}
   - component: {fileID: 61731961580936540}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Dusman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e254610fb5b944e829a739673ad350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mermi: {fileID: 1528128645253162, guid: 68b25f1d75b83094a87a1579d4bfc56e, type: 2}
+  mermiHizi: 8
   can: 100
+  saniyeBasinaMermiAtma: 0.6
 --- !u!212 &212434296036166704
 SpriteRenderer:
   m_ObjectHideFlags: 1
