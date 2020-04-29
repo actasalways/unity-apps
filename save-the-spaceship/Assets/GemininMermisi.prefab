@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212317572709366758}
   - component: {fileID: 50556192588478926}
   - component: {fileID: 61646886518224002}
+  - component: {fileID: 114363192844503060}
   m_Layer: 0
   m_Name: GemininMermisi
   m_TagString: Untagged
@@ -87,6 +88,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.18, y: 0.51}
   m_EdgeRadius: 0
+--- !u!114 &114363192844503060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1528128645253162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a28123a6faefca4db3f36669aec4c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  verdigiZarar: 10
 --- !u!212 &212317572709366758
 SpriteRenderer:
   m_ObjectHideFlags: 1

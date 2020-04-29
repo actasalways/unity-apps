@@ -25,7 +25,7 @@ public class UzayGemisiKontrol : MonoBehaviour
     void atesEtme()
     {
         GameObject gemimizinMermisi = Instantiate(Mermi, transform.position, Quaternion.identity);
-        gemimizinMermisi.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 3f, 0);// y => merminin hızı
+        gemimizinMermisi.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 4f, 0);// y => merminin hızı
     }
     void Update()
     {
