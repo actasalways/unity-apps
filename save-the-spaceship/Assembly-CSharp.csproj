@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\DuslamlarinCiktigiYer.cs" />
      <Compile Include="Assets\DusmanPozisyonu.cs" />
+     <Compile Include="Assets\mermileriYokEt.cs" />
      <Compile Include="Assets\UzayGemisiKontrol.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Ka-Fa 1500/Documents/GitHub/unity-training/save-the-spaceship/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

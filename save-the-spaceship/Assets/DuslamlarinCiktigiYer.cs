@@ -7,7 +7,7 @@ public class DuslamlarinCiktigiYer : MonoBehaviour {
     public GameObject dusmanPrefabi;
     public float genislik = 15f;
     public float yukseklik = 6f;
-    private float hiz = 5f;
+    private float hiz = 4f;
 
     private bool SagaHareket = true;
     private float xmax;
@@ -50,9 +50,13 @@ public class DuslamlarinCiktigiYer : MonoBehaviour {
         float sagSinir = transform.position.x + genislik / 2;
         float solSinir = transform.position.x - genislik / 2;
 
-        if (sagSinir > xmax || solSinir < xmin)
+        if (sagSinir > xmax)
         {
-            SagaHareket = !SagaHareket;
+            SagaHareket = false;
+        }
+        else if (solSinir < xmin)
+        {
+            SagaHareket = true;
         }
 
     }
