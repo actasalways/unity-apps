@@ -844,6 +844,7 @@ MonoBehaviour:
     type: 2}
   genislik: 14.5
   yukseklik: 5.5
+  yaratmayiGeciktirmeSuresi: 0.5
 --- !u!4 &1273450436
 Transform:
   m_ObjectHideFlags: 0

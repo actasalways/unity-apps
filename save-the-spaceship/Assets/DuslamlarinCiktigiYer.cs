@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DuslamlarinCiktigiYer : MonoBehaviour {
+public class DuslamlarinCiktigiYer : MonoBehaviour
+{
 
     public GameObject dusmanPrefabi;
     public float genislik = 15f;
@@ -12,6 +13,7 @@ public class DuslamlarinCiktigiYer : MonoBehaviour {
     private bool SagaHareket = true;
     private float xmax;
     private float xmin;
+    public float yaratmayiGeciktirmeSuresi = 0.5f;
 
     // Use this for initialization
     void Start()
@@ -21,10 +23,31 @@ public class DuslamlarinCiktigiYer : MonoBehaviour {
         Vector3 kameraninSagTarafi = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, objeIleKameraninZsininfarki));
         xmax = kameraninSagTarafi.x;
         xmin = kameraninSolTarafi.x;
+
+        DusmanlarinTekTekYaratilmasi();
+
+    }
+
+    void DusmanlarinYaratilmasi()
+    {
         foreach (Transform cocuk in transform)
         {
             GameObject dusman = Instantiate(dusmanPrefabi, cocuk.transform.position, Quaternion.identity) as GameObject;
             dusman.transform.parent = cocuk;
+        }
+    }
+
+    void DusmanlarinTekTekYaratilmasi()
+    {
+        Transform uygunPozisyon = sonrakiUygunPozisyon();
+        if (uygunPozisyon)
+        {
+            GameObject dusman = Instantiate(dusmanPrefabi, uygunPozisyon.transform.position, Quaternion.identity) as GameObject;
+            dusman.transform.parent = uygunPozisyon;
+        }
+        if (sonrakiUygunPozisyon())
+        {
+            Invoke("DusmanlarinTekTekYaratilmasi", yaratmayiGeciktirmeSuresi);
         }
 
     }
@@ -33,10 +56,10 @@ public class DuslamlarinCiktigiYer : MonoBehaviour {
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(genislik, yukseklik));
     }
+
     // Update is called once per frame
     void Update()
     {
-
         if (SagaHareket)
         {
             //transform.position += new Vector3(hiz * Time.deltaTime, 0);
@@ -59,6 +82,38 @@ public class DuslamlarinCiktigiYer : MonoBehaviour {
             SagaHareket = true;
         }
 
+        if (butunDusmanlarOlduMu())
+        {
+            DusmanlarinTekTekYaratilmasi();
+        }
+
     }
+
+    Transform sonrakiUygunPozisyon()
+    {
+        foreach (Transform cocuklarinPozisyonu in transform)
+        {
+            if (cocuklarinPozisyonu.childCount == 0)
+            {
+                return cocuklarinPozisyonu;
+            }
+        }
+
+        return null;
+    }
+
+    bool butunDusmanlarOlduMu()
+    {
+        foreach (Transform cocuklarinPozisyonu in transform)
+        {
+            if (cocuklarinPozisyonu.childCount > 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 }
 
