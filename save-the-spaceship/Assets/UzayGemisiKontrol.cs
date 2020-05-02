@@ -11,8 +11,9 @@ public class UzayGemisiKontrol : MonoBehaviour
     public float mermininHizi = 8f;
     public float can = 400f;
     public float atesEtmeAraligi = 0.3f;
-
     float xmin, xmax;
+
+    public AudioClip AtesSesi, OlumSesi;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,10 +25,10 @@ public class UzayGemisiKontrol : MonoBehaviour
             if (can <= 0)
             {
                 Destroy(gameObject);
+                AudioSource.PlayClipAtPoint(OlumSesi,transform.position);
             }
         }
     }
-
 
     void Start()
     {
@@ -42,6 +43,7 @@ public class UzayGemisiKontrol : MonoBehaviour
     {
         GameObject gemimizinMermisi = Instantiate(Mermi, transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
         gemimizinMermisi.GetComponent<Rigidbody2D>().velocity = new Vector3(0, mermininHizi, 0);// y => merminin hızı
+        AudioSource.PlayClipAtPoint(AtesSesi,transform.position);
     }
 
     void Update()

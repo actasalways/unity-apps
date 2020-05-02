@@ -8,6 +8,10 @@ public class DusmanKontrolu : MonoBehaviour
     public float mermiHizi = 8f;
     public float can = 100f;
     public float saniyeBasinaMermiAtma = 0.6f;
+    private SkorKontrolu skorKontrolu;
+    public AudioClip AtesSesi, OlumSesi;
+
+    public int skorDegeri = 200;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,6 +22,8 @@ public class DusmanKontrolu : MonoBehaviour
             if (can <= 0)
             {
                 Destroy(gameObject);
+                AudioSource.PlayClipAtPoint(OlumSesi,transform.position);
+                skorKontrolu.skoruArttir(skorDegeri);
             }
         }
     }
@@ -27,6 +33,13 @@ public class DusmanKontrolu : MonoBehaviour
         Vector3 baslangicPozisyonu = transform.position + new Vector3(0, -0.8f, 0);
         GameObject dusmaninMermisi = Instantiate(mermi, baslangicPozisyonu, Quaternion.identity) as GameObject;
         dusmaninMermisi.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -mermiHizi);
+        AudioSource.PlayClipAtPoint(AtesSesi,transform.position);
+    }
+
+    private void Start()
+    {
+        skorKontrolu = GameObject.Find("Skor").GetComponent<SkorKontrolu>();
+
     }
 
     void Update()

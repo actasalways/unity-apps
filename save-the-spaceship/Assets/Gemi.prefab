@@ -124,6 +124,8 @@ MonoBehaviour:
   mermininHizi: 8
   can: 400
   atesEtmeAraligi: 0.3
+  AtesSesi: {fileID: 0}
+  OlumSesi: {fileID: 0}
 --- !u!212 &212370398860645194
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -156,8 +158,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 366240793
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 99b9e31ee9652ca4b891bac2d0e316d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
